@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        p {
+            margin: 0;
+            padding: 0;
+        }
+
+        .head {
+            height: 89px;
+            padding: 0 206px;
+            line-height: 89px;
+        }
+
+        .head .left_title {
+            vertical-align: middle;
+            font-size: 22px;
+            display: inline-block;
+        }
+
+        .head button {
+            display: inline-block;
+        }
+
+        .head button {
+            vertical-align: middle;
+            text-align: center;
+            line-height: 15px;
+            margin-left: 31px;
+            border: none;
+            border-radius: 2px;
+            color: white;
+            height: 21px;
+            width: 54px;
+            background-color: #21a557;
+        }
+
+        #text_edu {
+            font-size: 28px;
+            font-family: Gill Sans MT;
+            font-weight: bold;
+            color: #39a030;
+        }
+
+        #text_edu_span {
+            color: #39a030;
+        }
+
+        .head .title_fans {
+            display: inline-block;
+            margin-left: 10px;
+            font-size: 12px;
+        }
+
+        .head .left_area {
+            float: left;
+        }
+
+        .head_nav {
+            float: right;
+        }
+
+        .head_nav li {
+            vertical-align: middle;
+            margin: 0 25px;
+            float: right;
+        }
+
+        .head_nav ul {
+            float: left;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #img_search {
+            vertical-align: middle;
+        }
+
+        .banner {
+            height: 460px;
+            width: 100%;
+            overflow: auto;
+        }
+
+        #img_banner {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .adv_desc {
+            display: flex;
+            box-sizing: border-box;
+            padding: 60px 211px;
+            height: 297px;
+            background-color: beige;
+        }
+
+        .adv1 {
+            height: 100%;
+            float: left;
+        }
+
+        .adv_desc1, .adv_desc2, .adv_desc3 {
+            margin: 0;
+            width: 239px;
+        }
+
+        .adv_desc_title {
+            font-family: 微软雅黑;
+            font-size: 22px;
+        }
+
+        .adv_desc_content {
+            margin-top: 20px;
+            font-family: 微软雅黑;
+            font-size: 14px;
+            line-height: 24px;
+        }
+        .adv_parent1, .adv_parent2, .adv_parent3{
+            flex-grow: 1;
+        }
+
+    </style>
+</head>
+<body>
+<div class="head">
+    <div class="left_area">
+        <span class="left_title" id="text_edu">EDU</span>
+        <span class="left_title" id="text_edu_span"> | </span>
+        <span class="left_title">网易教育产品部</span>
+        <button>+ 关注</button>
+        <span class="title_fans">粉丝  45</span>
+    </div>
+    <div class="head_nav">
+        <img id="img_search" src="img/search.png">
+        <ul>
+            <li><a>中国大学MOOC</a></li>
+            <li><a>云课堂</a></li>
+            <li><a>网易公开课</a></li>
+        </ul>
+    </div>
+</div>
+<div class="banner">
+    <img id="img_banner" src="img/banner1.jpg">
+</div>
+<div class="adv_desc">
+    <div class="adv_parent1">
+        <div class="adv1">
+            <img id="adv1" src="img/adv1.png">
+        </div>
+        <div class="adv_desc1">
+            <p class="adv_desc_title">网易公开课</p>
+
+            <p class="adv_desc_content">退出国内外名校公开课，设计广泛的学校，名校老师认真讲解深度剖析，网易视频公开课频道搭建起强有力的网络视频教学平台</p>
+        </div>
+    </div>
+    <div class="adv_parent2">
+        <div class="adv2">
+            <img id="adv2" src="img/adv1.png">
+        </div>
+        <div class="adv_desc2">
+            <p class="adv_desc_title">网易云课堂</p>
+
+            <p class="adv_desc_content">网易旗下大型在线学习平台，该平台面向学习者提供海量免费、优质课程,创新的个性化学习体验，自由开放的交流互动环境。</p>
+        </div>
+    </div>
+    <div class="adv_parent3">
+        <div class="adv3">
+            <img id="adv3" src="http://static.zybuluo.com/baifann/g0yoxacl5qpiwfgngissu0t7/adv1.png">
+        </div>
+        <div class="adv_desc3">
+            <p class="adv_desc_title">中国大学MOOC</p>
+
+            <p class="adv_desc_content">是爱课程网携手云课堂打造的在线学习平台，每一个有提升愿望的人,都可以在这里学习中国最好的大学课程，学完还能获得认证证书。</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

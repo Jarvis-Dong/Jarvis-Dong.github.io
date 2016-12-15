@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="e05da231-6aea-48b6-b27e-fa50b4a0d2c8" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2015/10/02/hello-world/index.html" afterPath="$PROJECT_DIR$/2015/10/02/hello-world/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/archives/index.html" afterPath="$PROJECT_DIR$/archives/index.html" />
     </list>
     <ignored path="Jarvis-Dong.github.io.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -54,14 +52,14 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5688889">
-              <caret line="135" column="13" selection-start-line="135" selection-start-column="13" selection-end-line="135" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.33185184">
+              <caret line="131" column="62" selection-start-line="131" selection-start-column="62" selection-end-line="131" selection-end-column="62" />
               <folding>
-                <marker date="1481803509000" expanded="false" signature="1411:1492" placeholder="..." />
-                <marker date="1481803509000" expanded="true" signature="1493:1969" placeholder="..." />
-                <marker date="1481803509000" expanded="true" signature="1608:1960" placeholder="..." />
-                <marker date="1481803509000" expanded="true" signature="1714:1951" placeholder="..." />
-                <marker date="1481803509000" expanded="false" signature="1899:1949" placeholder="..." />
+                <marker date="1481807643000" expanded="false" signature="1411:1492" placeholder="..." />
+                <marker date="1481807643000" expanded="true" signature="1493:1969" placeholder="..." />
+                <marker date="1481807643000" expanded="true" signature="1608:1960" placeholder="..." />
+                <marker date="1481807643000" expanded="true" signature="1714:1951" placeholder="..." />
+                <marker date="1481807643000" expanded="false" signature="1899:1949" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -252,14 +250,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5688889">
-          <caret line="135" column="13" selection-start-line="135" selection-start-column="13" selection-end-line="135" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.33185184">
+          <caret line="131" column="62" selection-start-line="131" selection-start-column="62" selection-end-line="131" selection-end-column="62" />
           <folding>
-            <marker date="1481803509000" expanded="false" signature="1411:1492" placeholder="..." />
-            <marker date="1481803509000" expanded="true" signature="1493:1969" placeholder="..." />
-            <marker date="1481803509000" expanded="true" signature="1608:1960" placeholder="..." />
-            <marker date="1481803509000" expanded="true" signature="1714:1951" placeholder="..." />
-            <marker date="1481803509000" expanded="false" signature="1899:1949" placeholder="..." />
+            <marker date="1481807643000" expanded="false" signature="1411:1492" placeholder="..." />
+            <marker date="1481807643000" expanded="true" signature="1493:1969" placeholder="..." />
+            <marker date="1481807643000" expanded="true" signature="1608:1960" placeholder="..." />
+            <marker date="1481807643000" expanded="true" signature="1714:1951" placeholder="..." />
+            <marker date="1481807643000" expanded="false" signature="1899:1949" placeholder="..." />
           </folding>
         </state>
       </provider>

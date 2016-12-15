@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <script src="../js/jquery.js"></script>
+    <script src="../js/jquery-ui.js"></script>
+    <script src="../js/jquery.fullPage.js"></script>
+
+    <script src="../js/H5.js"></script>
+    <script src="../js/H5ComponentBase.js"></script>
+    <link rel="stylesheet" href="../css/H5.css"/>
+</head>
+<body>
+<!--测试内容组织功能，以及fullpage页面切换和组件切换-->
+<!--内容组织管理可能需要加载多个资源-->
+
+<script>
+    $(function () {
+        var h5 = new H5()
+
+        h5
+                .addPage('face')
+                    .addComponent('logo',{
+                        text:'logo',
+                        width:400,
+                        height:100,
+                        css:{
+                            backgroundColor:'red',
+                            top:20,
+                            opacity:0
+                        },
+                        center:true,
+                        animateIn:{ bottom:60,opacity:1},
+                        animateOut:{ bottom:0,opacity:0},
+                    })
+                    .addComponent('slogan',{
+                        text:'slogan',
+                        width:400,
+                        height:100,
+                        css:{
+                            backgroundColor:'blue',
+                            top:200,
+                            opacity:0
+                        },
+                        center:true,
+                        animateIn:{ bottom:60,opacity:1},
+                        animateOut:{ bottom:0,opacity:0},
+                    })
+                .addPage('desc','核心理念')
+                    .addComponent('caption',{
+                        text:'核心理念',
+                        width:400,
+                        height:100,
+                        css:{
+                            backgroundColor:'blue',
+                            top:200,
+                            opacity:0
+                        },
+                        center:true,
+                        animateIn:{ bottom:60,opacity:1},
+                        animateOut:{ bottom:0,opacity:0},
+                    })
+                .addPage('page-3','课程分布操作')
+                    .addComponent('caption',{text:'课程方向分布'})
+
+                .loader();
+    })
+</script>
+</body>
+</html>
