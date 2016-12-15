@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e05da231-6aea-48b6-b27e-fa50b4a0d2c8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2015/10/02/hello-world/index.html" afterPath="$PROJECT_DIR$/2015/10/02/hello-world/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/archives/index.html" afterPath="$PROJECT_DIR$/archives/index.html" />
     </list>
     <ignored path="Jarvis-Dong.github.io.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -24,16 +24,16 @@
   <component name="FileEditorManager">
     <leaf>
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/2015/10/02/hello-world/index.html">
+        <entry file="file://$PROJECT_DIR$/archives/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6637037">
-              <caret line="128" column="14" selection-start-line="128" selection-start-column="12" selection-end-line="128" selection-end-column="14" />
+            <state vertical-scroll-proportion="0.4977778">
+              <caret line="131" column="20" selection-start-line="131" selection-start-column="20" selection-end-line="131" selection-end-column="20" />
               <folding>
-                <marker date="1481802836000" expanded="false" signature="2134:2215" placeholder="..." />
-                <marker date="1481802836000" expanded="true" signature="2216:2692" placeholder="..." />
-                <marker date="1481802836000" expanded="true" signature="2331:2683" placeholder="..." />
-                <marker date="1481802836000" expanded="true" signature="2437:2674" placeholder="..." />
-                <marker date="1481802836000" expanded="false" signature="2622:2672" placeholder="..." />
+                <marker date="1481803223000" expanded="false" signature="1425:1506" placeholder="..." />
+                <marker date="1481803223000" expanded="true" signature="1507:1983" placeholder="..." />
+                <marker date="1481803223000" expanded="true" signature="1622:1974" placeholder="..." />
+                <marker date="1481803223000" expanded="true" signature="1728:1965" placeholder="..." />
+                <marker date="1481803223000" expanded="false" signature="1913:1963" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -48,6 +48,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/2015/10/02/hello-world/index.html" />
+        <option value="$PROJECT_DIR$/archives/index.html" />
       </list>
     </option>
   </component>
@@ -127,19 +128,21 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="archives" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Jarvis-Dong.github.io" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Jarvis-Dong.github.io" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="2015" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="10" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="02" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hello-world" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -200,14 +203,28 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/2015/10/02/hello-world/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6637037">
+        <state vertical-scroll-proportion="0.37925926">
           <caret line="128" column="14" selection-start-line="128" selection-start-column="12" selection-end-line="128" selection-end-column="14" />
           <folding>
-            <marker date="1481802836000" expanded="false" signature="2134:2215" placeholder="..." />
-            <marker date="1481802836000" expanded="true" signature="2216:2692" placeholder="..." />
-            <marker date="1481802836000" expanded="true" signature="2331:2683" placeholder="..." />
-            <marker date="1481802836000" expanded="true" signature="2437:2674" placeholder="..." />
-            <marker date="1481802836000" expanded="false" signature="2622:2672" placeholder="..." />
+            <marker date="1481802846000" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1481802846000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1481802846000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1481802846000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1481802846000" expanded="false" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/archives/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4977778">
+          <caret line="131" column="20" selection-start-line="131" selection-start-column="20" selection-end-line="131" selection-end-column="20" />
+          <folding>
+            <marker date="1481803223000" expanded="false" signature="1425:1506" placeholder="..." />
+            <marker date="1481803223000" expanded="true" signature="1507:1983" placeholder="..." />
+            <marker date="1481803223000" expanded="true" signature="1622:1974" placeholder="..." />
+            <marker date="1481803223000" expanded="true" signature="1728:1965" placeholder="..." />
+            <marker date="1481803223000" expanded="false" signature="1913:1963" placeholder="..." />
           </folding>
         </state>
       </provider>
