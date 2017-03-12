@@ -3,187 +3,108 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
-    <style type="text/css">
-        body {
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/jquery.fullPage.js"></script>
+
+    <!--加载H5 组件 相关资源-->
+    <script type="text/javascript">
+        var res = ['Base','Bar','Bar_v','Point','PolyLine','Radar','Pie','Ring'];
+        var html = [];
+        for (var s in res){
+            html.push('<script type="text/javascript" src="js/H5Component'+res[s]+'.js"><\/script>');
+            html.push('<link rel="stylesheet" href="css/H5Component'+res[s]+'.css"/>')
+        }
+        document.write( html.join(' '));
+    </script>
+
+    <!--H5对象： 进行内容管理-->
+    <script src="js/H5.js"></script>
+    <link rel="stylesheet" href="css/H5.css"/>
+
+    <style>
+        body{
             margin: 0;
             padding: 0;
-        }
 
-        p {
-            margin: 0;
-            padding: 0;
         }
-
-        .head {
-            height: 89px;
-            padding: 0 206px;
-            line-height: 89px;
+        .h5_page_face{
+            background-image: url("imgs/face_bg.png");
         }
-
-        .head .left_title {
-            vertical-align: middle;
-            font-size: 22px;
-            display: inline-block;
+        .h5_component_name_slogan{
+            -webkit-animation: rock 2s infinite 2s;
         }
-
-        .head button {
-            display: inline-block;
+        @-webkit-keyframes rock {
+            0%{transform: rotate(0deg)}
+            5%{transform: rotate(3deg)}
+            10%{transform: rotate(-4deg)}
+            15%{transform: rotate(3deg)}
+            20%{transform: rotate(-2deg)}
+            25%{transform: rotate(1deg)}
+            30%{transform: rotate(-1deg)}
+            70%{transform: rotate(0deg)}
+            100%{transform: rotate(0deg)}
         }
-
-        .head button {
-            vertical-align: middle;
-            text-align: center;
-            line-height: 15px;
-            margin-left: 31px;
-            border: none;
-            border-radius: 2px;
-            color: white;
-            height: 21px;
-            width: 54px;
-            background-color: #21a557;
-        }
-
-        #text_edu {
-            font-size: 28px;
-            font-family: Gill Sans MT;
-            font-weight: bold;
-            color: #39a030;
-        }
-
-        #text_edu_span {
-            color: #39a030;
-        }
-
-        .head .title_fans {
-            display: inline-block;
-            margin-left: 10px;
-            font-size: 12px;
-        }
-
-        .head .left_area {
-            float: left;
-        }
-
-        .head_nav {
-            float: right;
-        }
-
-        .head_nav li {
-            vertical-align: middle;
-            margin: 0 25px;
-            float: right;
-        }
-
-        .head_nav ul {
-            float: left;
-            margin: 0;
-            padding: 0;
-            list-style: none;
-        }
-
-        #img_search {
-            vertical-align: middle;
-        }
-
-        .banner {
-            height: 460px;
-            width: 100%;
-            overflow: auto;
-        }
-
-        #img_banner {
-            height: 100%;
-            width: 100%;
-            overflow: hidden;
-        }
-
-        .adv_desc {
-            display: flex;
-            box-sizing: border-box;
-            padding: 60px 211px;
-            height: 297px;
-            background-color: beige;
-        }
-
-        .adv1 {
-            height: 100%;
-            float: left;
-        }
-
-        .adv_desc1, .adv_desc2, .adv_desc3 {
-            margin: 0;
-            width: 239px;
-        }
-
-        .adv_desc_title {
-            font-family: 微软雅黑;
-            font-size: 22px;
-        }
-
-        .adv_desc_content {
-            margin-top: 20px;
-            font-family: 微软雅黑;
-            font-size: 14px;
-            line-height: 24px;
-        }
-        .adv_parent1, .adv_parent2, .adv_parent3{
-            flex-grow: 1;
-        }
-
     </style>
+
+
 </head>
 <body>
-<div class="head">
-    <div class="left_area">
-        <span class="left_title" id="text_edu">EDU</span>
-        <span class="left_title" id="text_edu_span"> | </span>
-        <span class="left_title">网易教育产品部</span>
-        <button>+ 关注</button>
-        <span class="title_fans">粉丝  45</span>
-    </div>
-    <div class="head_nav">
-        <img id="img_search" src="img/search.png">
-        <ul>
-            <li><a>中国大学MOOC</a></li>
-            <li><a>云课堂</a></li>
-            <li><a>网易公开课</a></li>
-        </ul>
-    </div>
-</div>
-<div class="banner">
-    <img id="img_banner" src="img/banner1.jpg">
-</div>
-<div class="adv_desc">
-    <div class="adv_parent1">
-        <div class="adv1">
-            <img id="adv1" src="img/adv1.png">
-        </div>
-        <div class="adv_desc1">
-            <p class="adv_desc_title">网易公开课</p>
 
-            <p class="adv_desc_content">退出国内外名校公开课，设计广泛的学校，名校老师认真讲解深度剖析，网易视频公开课频道搭建起强有力的网络视频教学平台</p>
-        </div>
-    </div>
-    <div class="adv_parent2">
-        <div class="adv2">
-            <img id="adv2" src="img/adv1.png">
-        </div>
-        <div class="adv_desc2">
-            <p class="adv_desc_title">网易云课堂</p>
 
-            <p class="adv_desc_content">网易旗下大型在线学习平台，该平台面向学习者提供海量免费、优质课程,创新的个性化学习体验，自由开放的交流互动环境。</p>
-        </div>
-    </div>
-    <div class="adv_parent3">
-        <div class="adv3">
-            <img id="adv3" src="http://static.zybuluo.com/baifann/g0yoxacl5qpiwfgngissu0t7/adv1.png">
-        </div>
-        <div class="adv_desc3">
-            <p class="adv_desc_title">中国大学MOOC</p>
 
-            <p class="adv_desc_content">是爱课程网携手云课堂打造的在线学习平台，每一个有提升愿望的人,都可以在这里学习中国最好的大学课程，学完还能获得认证证书。</p>
-        </div>
-    </div>
-</div>
 </body>
+<script>
+    $(function () {
+        var h5 = new H5()
+
+        h5
+                .addPage('face')
+                .addComponent('logo',{
+                    center:true,
+                    width:395,
+                    height:130,
+                    bg:'imgs/face_logo.png',
+                    css:{opacity:0},
+                    animateIn:{top:100,opacity:1},
+                    animateOut:{top:0,opacity:0},
+
+                })
+                .addComponent('slogan',{
+                    center:true,
+                    width:395,
+                    height:99,
+                    bg:'imgs/face_slogan.png',
+                    css:{opacity:0,top:180},
+                    animateIn:{left:'50%',opacity:1},
+                    animateOut:{left:0,opacity:0},
+                    delay:500,
+
+
+                })
+                .addComponent('face_image_left',{
+                    width:370,
+                    height:493,
+                    bg:'imgs/face_img_left.png',
+                    css:{opacity:0,left:-50,bottom:-50},
+                    animateIn:{left:0,bottom:0,opacity:1},
+                    animateOut:{left:-50,bottom:-50,opacity:0},
+                    delay:1000,
+
+                })
+                .addComponent('face_image_right',{
+                    width:276,
+                    height:449,
+                    bg:'imgs/face_img_right.png',
+                    css:{opacity:0,right:-50,bottom:-50},
+                    animateIn:{right:0,bottom:0,opacity:1},
+                    animateOut:{right:-50,bottom:-50,opacity:0},
+                    delay:1000,
+
+                })
+
+                .loader();
+    })
+</script>
 </html>

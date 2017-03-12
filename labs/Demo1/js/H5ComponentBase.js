@@ -10,9 +10,7 @@ var H5ComponentBase = function (name, cfg ){
     var cls ='h5_component_name_'+name+' h5_component_'+cfg.type
     var component = $('<div class="h5_component '+cls+'" id="'+id+'">')
 
-    if(cfg.text){
-        console.log(cfg.text);
-    }
+    cfg.text   &&  component.text(cfg.text);
     cfg.width  && component.width(cfg.width/2);
     cfg.height && component.height(cfg.height/2);
     cfg.css && component.css(cfg.css);
@@ -23,12 +21,21 @@ var H5ComponentBase = function (name, cfg ){
             left : '50%'
         })
     }
+    if( typeof cfg.onclick === 'function' ){
+        component.on('click',cfg.onclick);
+    }
 
     component.on('onLoad', function () {
-        component.removeClass(cls+'_leave')
-        component.addClass(cls+'_load')
 
-        cfg.animateIn && component.animate(cfg.animateIn);
+
+        setTimeout(function(){
+            component.removeClass(cls+'_leave')
+            component.addClass(cls+'_load');
+            cfg.animateIn && component.animate(cfg.animateIn);
+
+
+        },cfg.delay||0)
+
 
         return false;
     });
@@ -36,8 +43,14 @@ var H5ComponentBase = function (name, cfg ){
         component.removeClass(cls+'_load')
         component.addClass(cls+'_leave')
 
-        cfg.animateOut && component.animate(cfg.animateOut);
 
+        setTimeout(function(){
+            component.removeClass(cls+'_load')
+            component.addClass(cls+'_leave')
+            cfg.animateOut && component.animate(cfg.animateOut);
+
+
+        },cfg.delay||0)
         return false;
     });
 

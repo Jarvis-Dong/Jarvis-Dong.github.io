@@ -37,8 +37,31 @@ var H5 = function () {
         var page = this.page.slice(-1)[0];
 
         switch(cfg.type){
-            case 'base':
-                component = new H5ComponentBase(name ,cfg);
+            case 'base' :
+                component = new H5ComponentBase(name,cfg);
+                break;
+
+            case 'polyline' :
+                component = new H5ComponentPolyline(name,cfg);
+                break;
+
+            case 'pie' :
+                component = new H5ComponentPie(name,cfg);
+                break;
+            case 'bar' :
+                component = new H5ComponentBar(name,cfg);
+                break;
+
+            case 'radar' :
+                component = new H5ComponentRadar(name,cfg);
+                break;
+
+            case 'pie' :
+                component = new H5ComponentPie(name,cfg);
+                break;
+
+            case 'point' :
+                component = new H5ComponentPoint(name,cfg);
                 break;
             default:
         }
@@ -49,7 +72,7 @@ var H5 = function () {
     //H5对象初始化重现
     this.loader = function () {
         this.el.fullpage({
-            'sectionsColor':['#ccc','#aaa','#254587','#695684'],
+            'sectionsColor':['#ccc','#aaa','#254587','#695684','#254587','#695684','#254587','#695684','#254587','#695684','#254587','#695684','#254587'],
             onLeave:function( index, nextIndex,direction){
                 $(this).find('.h5_component').trigger('onLeave');
             },

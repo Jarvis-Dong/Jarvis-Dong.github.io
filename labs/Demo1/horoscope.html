@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+
+    <title>2017星座运势</title>
+
+    <!-- 载入所有的组件资源 -->
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/jquery.fullPage.js"></script>
+
+
+    <!-- H5对象：进行内容管理 -->
+
+    <script type="text/javascript" src="js/H5.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/H5.css" >
+
+    <script type="text/javascript" src="js/H5_loading.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/H5_loading.css" >
+    
+    <body>
+
+    <div class="loading">
+
+        <div class="double-bounce1"></div>
+        <div class="double-bounce2"></div>
+
+        <div id="rate">0%</div>
+
+    </div>
+
+
+
+    <!-- 加载 H5组件 相关资源 -->
+    <script type="text/javascript">
+
+        var res = [
+            'Base','Bar','Radar'
+            ];
+        var html = [];
+        for(var s in res){
+            html.push('<script type="text/javascript" src="js/H5Component'+res[s]+'.js"><\/script>');
+            html.push('<link rel="stylesheet" type="text/css" href="css/H5Component'+res[s]+'.css">');
+
+        }
+        document.write( html.join('') );
+    </script>
+    <!-- 主要逻辑 -->
+	<style>
+		body{
+			margin:0;
+			padding:0;
+		}
+	
+        @-webkit-keyframes rock{
+            0%{ transform:rotate(0deg)}
+            5%{ transform:rotate(3deg)}
+            10%{ transform:rotate(-4deg)}
+            15%{ transform:rotate(3deg)}
+            20%{ transform:rotate(-2deg)}
+            25%{ transform:rotate(1deg)}
+            30%{ transform:rotate(-1deg)}
+            70%{ transform:rotate(0deg)}
+            100%{ transform:rotate(0deg)}
+        }
+
+		.h5_page {background-color:#000;color:#fff;}
+		.h5_component_name_enter_small{
+			border-radius:50%;
+			background-color:rgba(76, 114, 215, 0.51);
+			width:40px;
+			height:20px;
+			padding:20px 10px;
+			line-height:20px;
+			text-align:center;
+			color:#fff;
+		}
+		.h5_component_name_enter{
+			border-radius:50%;
+			background-color:rgba(76, 114, 215, 0.51);
+			width:160px;
+			height:160px;
+			left:50%;
+			top:60%;
+			margin:-50px 0 0 -80px;
+			line-height:160px;
+			text-align:center;
+			color:#fff;
+		}
+		
+		.h5_component_name_star{
+			display:block;
+			height: 108px;
+			width:28%;
+			margin:40px 0 0 4%;
+			float:left;
+			position:static;
+			color:#fff;
+			line-height:244px;
+			text-align: center;
+			border-radius: 12%;
+
+		}
+		.h5_component_name_detail_icon{
+			border-radius: 12%;
+		}
+		.h5_component_bar .name,
+		.h5_component_bar .per{color:#fff}
+		.h5_component_bar .per{
+		  position: absolute;
+			right: -25px;
+		}
+	</style>
+    <script type="text/javascript">
+	
+	if (window.DeviceMotionEvent) {
+		window.addEventListener('devicemotion', function (eventData) {
+        var acceleration = eventData.accelerationIncludingGravity;
+
+        if (Math.abs(acceleration.x) < 2 && Math.abs(acceleration.y) < 2) {
+            return false;
+        }
+
+        var degX = (acceleration.x * 10 / Math.PI)%25;
+
+            $('.h5_component_name_bg:visible').css({
+                'left': degX+'%'
+            });
+
+		}, false);
+	}
+	
+	var star_data = [
+		{name:'白羊',bg:'baiyang',date:'3月21日～4月20日',data:[['爱情' , .6  ,'#ff7676'],['事业' , .75  ],['财富' , .95  ],['健康' , .99  ],['整体' , .65  ]]},
+		{name:'金牛',bg:'jinniu',date:'3月21日～4月20日',data:[['爱情' , .9  ,'#ff7676'],['事业' , .75  ],['财富' , .8  ],['健康' , .99  ],['整体' , .65  ]]},
+		{name:'双子',bg:'shuangzi',date:'3月21日～4月20日',data:[['爱情' , .6  ,'#ff7676'],['事业' , .75  ],['财富' , .65  ],['健康' , .99  ],['整体' , .65  ]]},
+		{name:'巨蟹',bg:'juxie',date:'3月21日～4月20日',data:[['爱情' , .6  ,'#ff7676'],['事业' , .75  ],['财富' , .95  ],['健康' , .99  ],['整体' , .65  ]]},
+		{name:'狮子',bg:'shizi',date:'3月21日～4月20日',data:[['爱情' , .8  ,'#ff7676'],['事业' , .75  ],['财富' , .65  ],['健康' , .99  ],['整体' , .65  ]]},
+		{name:'处女',bg:'chunv',date:'3月21日～4月20日',data:[['爱情' , .9  ,'#ff7676'],['事业' , .99  ],['财富' , .95  ],['健康' , .99  ],['整体' , .99  ]]},
+		{name:'天秤',bg:'tianping',date:'3月21日～4月20日',data:[['爱情' , .6  ,'#ff7676'],['事业' , .75  ],['财富' , .65  ],['健康' , .99  ],['整体' , .65  ]]},
+		{name:'天蝎',bg:'tianxie',date:'3月21日～4月20日',data:[['爱情' , .6  ,'#ff7676'],['事业' , .75  ],['财富' , .65  ],['健康' , .99  ],['整体' , .65  ]]},
+		{name:'射手',bg:'sheshou',date:'3月21日～4月20日',data:[['爱情' , .6  ,'#ff7676'],['事业' , .75  ],['财富' , .65  ],['健康' , .99  ],['整体' , .65  ]]},
+		{name:'摩羯',bg:'mojie',date:'3月21日～4月20日',data:[['爱情' , .6  ,'#ff7676'],['事业' , .75  ],['财富' , .65  ],['健康' , .99  ],['整体' , .65  ]]},
+		{name:'水瓶',bg:'shuiping',date:'3月21日～4月20日',data:[['爱情' , .6  ,'#ff7676'],['事业' , .95  ],['财富' , .65  ],['健康' , .99  ],['整体' , .65  ]]},
+		{name:'双鱼',bg:'shuangyu',date:'3月21日～4月20日',data:[['爱情' , .9  ,'#ff7676'],['事业' , .75  ],['财富' , .65  ],['健康' , .99  ],['整体' , .65  ]]},
+	];
+	
+	var star_detail_data = [
+	'白羊座进入2017年， 整体运势一般，你会感到少许压力，很难掌控生活中发生的事情，可支配和利用的资源在慢慢减少，有时候还会陷入被动的境地。幸运的是，今年上半年会是比较好把握的阶段，木星的运行轨迹将给你带来良好的状态，即便遇到困难，只要主动积极地应对，也能够将困难化解。2017年里，你的人气和知名度在水星的作用下开始上扬，人脉将成为你最好的武器，足以让你消除内心的无助和迷茫。然而白羊座们在这一年仍需要对自己有一个清晰客观的认知，包括个人能力、交际能力等，给自己一个正确的定位将更有利于未来的发展。',
+	'2017年金牛座将承受继续感受到土星带来的压力，你生活的轨迹并没有太大的改变，全年整体运势有喜有忧。今年大部分时间里，金牛座们常常固步自封，这种自闭的状态在海王星的影响下将表现得更加明显。然而，生活如逆水行舟，不进则退，2017年水星的四次逆行将会给你的生活带来冲击，你必须勇敢地迎难而上。4月份水逆的影响力尤为猛烈，且带来的后果不可小视，这场暴风雨是每个金牛都必须经历的，要做好充分的准备迎接这一波的困难。凡事都有两面性，如果金牛们能够转换角度看待问题，这将会是一次很棒的开始，同时也是锻炼自己、提升技能、开创新篇章的好机会。',
+	'2017年上半年木星落在双子座的第四宫，这将会是一个新的起点，在这段时间内所发生的一切，如转换工作职位、改变想法等，这些都是正常的，木星将驱使你主动改变现状，开展一段新的旅途；部分双子座则会将心思回归到家庭当中，主动承担起家庭的重任，并致力于修复家庭成员之间的关系；而部分双子座则仍然我行我素，慢慢享受一个人的生活。不管你是哪类双子座，新的一年里，你都会逐渐发生变化，迎来一个崭新的自我。',
+	'巨蟹座2017年的运势并不理想，“压力”成为了一整年的关键词，生活压力、工作压力、学习压力贯穿了一整年，困难、挫折、烦闷、无奈等这些字眼对于今年的巨蟹座来说并不陌生，不过，生活希望会在巨蟹座的努力之下慢慢点燃，巨蟹们请用乐观愉悦的心情来面对生活，用坚强的毅力抵挡困难。',
+	'过去狮子座在工作、生活中总是能凭借自己的才能赢得掌声，你掌握着超越他人的技巧。但进入2017年，土星来了，它将会给你的生活带来什么影响？土星带来的影响是负面的，主要集中在今年4月-8月份，这段时间狮子座们将会有切身的体会，因为土星会给你带来挫败感。你曾经的自信和自尊在此时荡然无存，尤其是感情方面，爱情问题对你打击最大，你可能会经历一段刻骨铭心的失恋，或是被婚姻生活伤得遍体鳞伤，这些都是土星对你考验。',
+	'2017年上半年是一个调整期，木星落在交友宫，处女座们可在人际交往中获得有用的信息，将这些信息作用于工作生活中，一定会受益匪浅。过去你承受的压力在今年上半年会逐渐得到释放，可通过参加社交、与友人沟通等方式使得心灵变得轻松愉悦。',
+	'2017年木星的带来的幸运能量让天秤座充满动力，今年你想要的自由，想要实现的目标都会在木星正面作用下一步一步去实现，你会开创新的生活，也有机会去远方旅行，以往想做的事情将会在今年勇敢的迈出脚步。木星给你自由，但并不是让你任性而为，土星、水星和海王星带来的负能量尚未褪去，并且正在汹涌袭来，你在2017年一整年里仍然是忙碌的，事业、爱情、人际等方面都需要你用心经营。',
+	'冥王星守护下的天蝎座个性比较独立，总是独来独往、我行我素。进入2017年，木星为你搭建了一个较好的人际网络，你的人缘在这一年明显提升。天蝎座今年会接触到不同的人和事，也会参加各种各样的活动，社交活跃的你将告别过去孤军作战的生活和工作模式。',
+	'进入2017年，射手座身体有劳累疲乏之感，心理承受压力较大，但不可否认的是，上半年在守护星木星的庇护下，射手座人际关系甚好，贵人运也不错。木星的力量会帮助你提升一个台阶，包括升迁、加薪、增加知名度等。射手座自身也会收起贪玩之心，开始专注于事业、学业，而运势也会起到推波助澜之效，部分射手座也进入买房买车、结婚生子、创业的阶段，今年是射手座的起飞年。',
+	'2017年冥王星给摩羯座释放施展才华的机会，你却要低调行事、默默努力、不断提升自己的经验和技能。海王星在玄秘宫的位置将促使摩羯座更注重心灵，而非表面上的风光无限，这样摩羯座在职场、生活中就被贴上了低调的标签，若违反这一原则，你将会被海王星的能量束缚。',
+	'2017年初（1月29日-3月9日）火星落在命宫内，水瓶座体内将充满了能量和行动力，充沛的精力将驱使你大胆地追求理想。火星使水瓶座富有开创、自我肯定的精神，并且具备良好的领导、组织能力。火星在命宫的位置也代表水瓶座极具进取、占有和侵略性，你可能会变得非常冲动、自我、任性，对于你认定的事情，就会不顾后果的去实行，并且会为了达成目标而有意或者无意中伤害他人的利益。',
+	'2017年海王星落在双鱼座，也就是回归到本位宫的位置，行星的力量将发挥到极致，因此双鱼座的整体运势较佳。海王星回到自己的宫位，意味着双鱼座在今年将更容易达成目标，并获得物质、精神上的满足。双鱼座是具有想象力和创造力的星座，当海王星回归到双鱼座，代表双鱼座在艺术方面的细胞被全面激活，从事音乐、广告、绘画、设计、摄影等艺术行业的双鱼座而言将更容易获得名气和成功。此外，正因为这种想象力的趋势，导致双鱼座容易迷失在美妙和享受的梦境之中，亦或是迷失在极端的情感、思绪中。',
+	'',
+	]
+
+	$(function  () {
+		var h5 = new H5();
+		var list_index = 3;
+		
+		h5
+		.addPage('face')
+			.addComponent('bg',{
+				css:{
+					width:'150%',
+					height:'100%',
+					left:'-25%',
+					backgroundSize:'cover'
+				},
+				bg:'imgs/face_bg.png'
+			})
+			.addComponent('enter',{
+					text:'2017星座运势',
+					onclick : function(){
+						$.fn.fullpage.moveTo( 1 )
+					}
+				})
+
+	var list = h5.addPage('list');
+		
+		for(var i=0;i<12;i++){
+			list.addComponent('star star_'+i,{
+				'text':star_data[i].name,
+				'bg':'imgs/'+star_data[i].bg+'.png',
+				css:{
+					'-webkit-animation':'rock 12s infinite '+(i+2)+'s'
+				},
+				onclick:(function(i){
+					return function(){
+						$.fn.fullpage.moveTo( list_index + i )
+					}
+				})(i)
+			})
+		}
+		
+		for(var i=0;i<12;i++){
+			h5.addPage('star')
+				.addComponent('detail_icon',{
+					width:160,
+					height:160,
+					center:true,
+					css:{top:'50px'},
+					'bg':'imgs/'+star_data[i].bg+'.png',
+				})
+				.addComponent('detail detail_'+i,{
+					'text': star_data[i].name + ' - ' + star_data[i].date,
+					css:{
+						textAlign:'center',
+						width:'100%',
+						top:'160px'
+					}
+				})
+				.addComponent('radar',{
+					type : 'radar',
+						width : 400,
+						height : 400,
+					data:star_data[i].data,
+					css:{top:'250px'},
+						center:true
+				})
+				
+				.addComponent('enter_small',{
+					text:'Back',
+					css:{left:'20%',top:'50%',opacity:0},
+					animateIn:{opacity:1,top:'80%',},
+					onclick : function(){
+						$.fn.fullpage.moveTo( list_index-1 )
+					},
+					delay:1000
+				})
+				.addComponent('enter_small',{
+					text:'Detail',
+					css:{right:'-20%',top:'80%',opacity:0,backgroundColor:'rgba(255, 114, 130, 0.51)'},
+					animateIn:{opacity:1,right:'20%',},
+					onclick : (function(i){return function(){
+						
+						$.fn.fullpage.moveTo( list_index + 12 );
+						$('.h5_component_name_end_text').text(star_detail_data[i]);
+						$('.h5_component_name_end_icon').css('backgroundImage','url(imgs/'+star_data[i].bg+'.png)');
+						
+					}})(i),
+					delay:1500
+				})
+		}
+		h5.addPage('end')
+			.addComponent('share',{
+                    width:128,
+                    height:120,
+                    bg:'imgs/tail_share.png',
+                    css:{opacity:0,top:110,right:110},
+                    animateIn:{opacity:1,top:10,right:10},
+                    animateOut:{opacity:0,top:110,right:110},
+                    delay:1000 
+                })
+			.addComponent('end_icon',{
+					width:160,
+					height:160,
+					center:true,
+					css:{top:'50px'},
+					
+					'bg':'imgs/'+star_data[0].bg+'.png',
+			})
+			.addComponent('end_text',{
+				css:{
+					padding:'10px 2em',
+					textIndent:'2em',
+					top:'30%',
+					opacity:0
+				},
+				animateIn:{opacity:1},
+				text: star_detail_data[0]
+			})
+			.addComponent('enter',{
+					text:'Back',
+					css:{left:'50%',top:'100%',opacity:0},
+					animateIn:{opacity:.5,top:'85%',},
+					onclick : function(){
+						$.fn.fullpage.moveTo( 1 )
+					},
+					delay:1500
+				})
+		h5.loader( [ 'imgs/baiyang.png' ]);
+		
+	});
+    </script>
+
+    </body>
+
+</html>
