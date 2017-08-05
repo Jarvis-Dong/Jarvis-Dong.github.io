@@ -16,7 +16,10 @@
             margin: 0px;
             padding: 0px
         }
-
+        #charts {
+            width: 100%;
+            height: 100%;
+        }
         #container {
             height: 700px;
             width: 1280px;
@@ -34,14 +37,17 @@
             left: 1%;
             color: white;
         }
+
         .control-left {
             float: left;
             width: 90%;
         }
+
         .control-right {
             float: left;
             width: 10%;
         }
+
         .control-right .button {
             margin-top: 30px;
         }
@@ -105,10 +111,15 @@
             </div>
         </div>
         <div class="control-right">
-            <button @click="compare()" class="button button-box button-giant button-glow button-highlight button-border button-rounded button-primary">确认</button>
+            <button @click="compare()"
+                    class="button button-box button-giant button-glow button-highlight button-border button-rounded button-primary">
+                确认
+            </button>
         </div>
     </div>
-    <div id="container"></div>
+    <div id="charts">
+        <div id="container"></div>
+    </div>
 </div>
 </body>
 <script src="http://api.map.baidu.com/api?v=2.0&ak=D9Axum17NFoWOxGhzUZ9MNQm7GB5p3fV"></script>
@@ -117,6 +128,7 @@
 <!-- 引入百度地图扩展 -->
 <script src="./node_modules/echarts/dist/extension/bmap.js"></script>
 <script type="text/javascript">
+
     var defaultDirection = {
         lh2bh: "121.333243,31.381085;121.275643,31.368691;121.236262,31.353643;121.236262,31.353643;121.170434,31.331931;121.16914,31.336804;121.153905,31.320024;121.153905,31.320024;121.148935,31.309194;121.153105,31.279613",
         lh2sd: "121.333243,31.381085;121.333027,31.382411;121.361162,31.386973;121.361737,31.383736;121.428715,31.40519;121.428715,31.40519;121.410748,31.461697;121.417072,31.466133",
@@ -140,7 +152,9 @@
             ROAD_LINE: "121.347457,31.353649;121.353853,31.354543;121.386336,31.365767;121.391797,31.362561;121.434916,31.377977;121.485077,31.400788"
         }]
     }
-    var mychart;
+
+
+    var myChart = [];
     var busLines = [];
     var data = szRoad.data;
     var hStep = 300 / (data.length - 1);
@@ -321,7 +335,6 @@
             zlevel: 1
         }]
     };
-
     var app = new Vue({
         el: '#app',
         data: {
@@ -333,8 +346,18 @@
             tegang: 70
         },
         mounted() {
+            let chartBox = document.getElementById('charts');
+            let chartContainer = document.getElementById('container');
+
+            // 用于使chart自适应高度和宽度,通过窗体高宽计算容器高宽
+            function resizeCharts() {
+                chartContainer.style.width = chartBox.style.width + 'px';
+                chartContainer.style.height = chartBox.style.height + 'px';
+            }
+            // 设置容器高宽
+
+            resizeCharts();
             myChart = echarts.init(document.getElementById('container'));
-            console.log(busLines);
             myChart.setOption(option);
         },
         methods: {
@@ -400,18 +423,18 @@
             }
         }
     })
-    var pointLiuHang = new BMap.Point(121.333243,31.381085);
-    var pointBaiHe = new BMap.Point(121.153105,31.279613);
-    var pointAnTing = new BMap.Point(121.167871,31.293179);
-    var pointShiDong = new BMap.Point(121.417072,31.466133);
-    var pointMdv03 = new BMap.Point(121.347457,31.353649);
-    var pointTeGang = new BMap.Point(121.485077,31.400788);
-    var labelLiuHang = new BMap.Label("刘行门站 ",{offset:new BMap.Size(20,-10)});
-    var labelBaiHe = new BMap.Label("白鹤门站",{offset:new BMap.Size(-65,-10)});
-    var labelAnTing = new BMap.Label("安亭门站",{offset:new BMap.Size(20,-10)});
-    var labelShiDong = new BMap.Label("石洞门站",{offset:new BMap.Size(20,-10)});
-    var labelMdv03 = new BMap.Label("Mdv03",{offset:new BMap.Size(20,-10)});
-    var labelTeGang = new BMap.Label("特岗南站",{offset:new BMap.Size(20,-10)});
+    var pointLiuHang = new BMap.Point(121.333243, 31.381085);
+    var pointBaiHe = new BMap.Point(121.153105, 31.279613);
+    var pointAnTing = new BMap.Point(121.167871, 31.293179);
+    var pointShiDong = new BMap.Point(121.417072, 31.466133);
+    var pointMdv03 = new BMap.Point(121.347457, 31.353649);
+    var pointTeGang = new BMap.Point(121.485077, 31.400788);
+    var labelLiuHang = new BMap.Label("刘行门站 ", {offset: new BMap.Size(20, -10)});
+    var labelBaiHe = new BMap.Label("白鹤门站", {offset: new BMap.Size(-65, -10)});
+    var labelAnTing = new BMap.Label("安亭门站", {offset: new BMap.Size(20, -10)});
+    var labelShiDong = new BMap.Label("石洞门站", {offset: new BMap.Size(20, -10)});
+    var labelMdv03 = new BMap.Label("Mdv03", {offset: new BMap.Size(20, -10)});
+    var labelTeGang = new BMap.Label("特岗南站", {offset: new BMap.Size(20, -10)});
     var bmap = myChart.getModel().getComponent('bmap').getBMap();
     var markerLiuHang = new BMap.Marker(pointLiuHang);
     var markerBaiHe = new BMap.Marker(pointBaiHe);
