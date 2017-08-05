@@ -21,7 +21,7 @@
             height: 100%;
         }
         #container {
-            height: 700px;
+            height: 680px;
             width: 1280px;
         }
 
@@ -351,8 +351,8 @@
 
             // 用于使chart自适应高度和宽度,通过窗体高宽计算容器高宽
             function resizeCharts() {
-                chartContainer.style.width = chartBox.style.width + 'px';
-                chartContainer.style.height = chartBox.style.height + 'px';
+                chartContainer.style.width = document.body.clientWidth + 'px';
+                chartContainer.style.height = document.body.clientHeight+ 'px';
             }
             // 设置容器高宽
 
@@ -454,6 +454,5 @@
     bmap.addOverlay(markerShiDong);
     bmap.addOverlay(markerMdv03);
     bmap.addOverlay(markerTeGang);
-
 </script>
 </html>
