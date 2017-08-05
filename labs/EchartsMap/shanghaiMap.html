@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>管道仿真Demo</title>
+    <link rel="stylesheet" href="./node_modules/amazeui/dist/css/amazeui.css">
+    <link href="https://cdn.bootcss.com/Buttons/2.0.0/css/buttons.css" rel="stylesheet">
+    <script src="https://unpkg.com/vue"></script>
+    <style type="text/css">
+        html {
+            height: 100%
+        }
+
+        body {
+            height: 100%;
+            margin: 0px;
+            padding: 0px
+        }
+
+        #container {
+            height: 700px;
+            width: 1280px;
+        }
+
+        .control-panel {
+            display: block;
+            position: absolute;
+            z-index: 999;
+            background: hsla(0, 0%, 100%, .3);
+            border-radius: 4px;
+            padding: 10px 40px;
+            width: 98%;
+            top: 5px;
+            left: 1%;
+            color: white;
+        }
+        .control-left {
+            float: left;
+            width: 90%;
+        }
+        .control-right {
+            float: left;
+            width: 10%;
+        }
+        .control-right .button {
+            margin-top: 30px;
+        }
+
+        .control-panel h1 {
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        .control-panel .control-list {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .control-panel .control-list .control-item {
+            flex: 0 0 33.33%;
+            margin-top: 2px;
+        }
+
+        .control-panel .control-list .control-item label {
+            width: 20%;
+        }
+
+        .control-panel .control-list .control-item input {
+            width: 50%;
+            display: inline-block;
+            padding: 0.3em;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div class="control-panel">
+        <div class="control-left">
+            <h1>各站点流量模拟</h1>
+            <div class="control-list">
+                <div class="control-item">
+                    <label for="">刘行门站</label>
+                    <input type="number" class="am-form-field am-round" v-model.number="liuhang">
+                </div>
+                <div class="control-item">
+                    <label for="">白鹤门站</label>
+                    <input type="number" class="am-form-field am-round" v-model.number="baihe">
+                </div>
+                <div class="control-item">
+                    <label for="">安亭站</label>
+                    <input type="number" class="am-form-field am-round" v-model.number="anting">
+                </div>
+                <div class="control-item">
+                    <label for="">石洞口站</label>
+                    <input type="number" class="am-form-field am-round" v-model.number="shidong">
+                </div>
+                <div class="control-item">
+                    <label for="">MVD03</label>
+                    <input type="number" class="am-form-field am-round" v-model.number="mvd03">
+                </div>
+                <div class="control-item">
+                    <label for="">特钢南站</label>
+                    <input type="number" class="am-form-field am-round" v-model.number="tegang">
+                </div>
+            </div>
+        </div>
+        <div class="control-right">
+            <button @click="compare()" class="button button-box button-giant button-glow button-highlight button-border button-rounded button-primary">确认</button>
+        </div>
+    </div>
+    <div id="container"></div>
+</div>
+</body>
+<script src="http://api.map.baidu.com/api?v=2.0&ak=D9Axum17NFoWOxGhzUZ9MNQm7GB5p3fV"></script>
+<!-- 引入 ECharts -->
+<script src="./node_modules/echarts/dist/echarts.js"></script>
+<!-- 引入百度地图扩展 -->
+<script src="./node_modules/echarts/dist/extension/bmap.js"></script>
+<script type="text/javascript">
+    var defaultDirection = {
+        lh2bh: "121.333243,31.381085;121.275643,31.368691;121.236262,31.353643;121.236262,31.353643;121.170434,31.331931;121.16914,31.336804;121.153905,31.320024;121.153905,31.320024;121.148935,31.309194;121.153105,31.279613",
+        lh2sd: "121.333243,31.381085;121.333027,31.382411;121.361162,31.386973;121.361737,31.383736;121.428715,31.40519;121.428715,31.40519;121.410748,31.461697;121.417072,31.466133",
+        bh2at: '121.153105,31.279613;121.157666,31.277224;121.161475,31.28247;121.162912,31.280989;121.167296,31.277255;121.164637,31.273428;121.164637,31.273428;121.169164,31.274477;121.171464,31.28639;121.167871,31.293179',
+        lh2mv: "121.333243,31.381085;121.33102,31.365507;121.343524,31.366864;121.347457,31.353649",
+        mv2tg: "121.347457,31.353649;121.353853,31.354543;121.386336,31.365767;121.391797,31.362561;121.434916,31.377977;121.485077,31.400788"
+    }
+    var szRoad = {
+        success: true,
+        errorCode: 0,
+        errorMsg: "成功",
+        data: [{
+            ROAD_LINE: "121.333243,31.381085;121.275643,31.368691;121.236262,31.353643;121.236262,31.353643;121.170434,31.331931;121.16914,31.336804;121.153905,31.320024;121.153905,31.320024;121.148935,31.309194;121.153105,31.279613"
+        }, {
+            ROAD_LINE: "121.333243,31.381085;121.333027,31.382411;121.361162,31.386973;121.361737,31.383736;121.428715,31.40519;121.428715,31.40519;121.410748,31.461697;121.417072,31.466133"
+        }, {
+            ROAD_LINE: '121.153105,31.279613;121.157666,31.277224;121.161475,31.28247;121.162912,31.280989;121.167296,31.277255;121.164637,31.273428;121.164637,31.273428;121.169164,31.274477;121.171464,31.28639;121.167871,31.293179'
+        }, {
+            ROAD_LINE: "121.333243,31.381085;121.33102,31.365507;121.343524,31.366864;121.347457,31.353649"
+        }, {
+            ROAD_LINE: "121.347457,31.353649;121.353853,31.354543;121.386336,31.365767;121.391797,31.362561;121.434916,31.377977;121.485077,31.400788"
+        }]
+    }
+    var mychart;
+    var busLines = [];
+    var data = szRoad.data;
+    var hStep = 300 / (data.length - 1);
+
+    var i = 0;
+    for (var x in data) {
+        // i++;
+        // if(i<5000)
+        //     continue;
+        var line = data[x];
+        // if(busLines.length>500)
+        //     break;
+        var pointString = line.ROAD_LINE;
+        var pointArr = pointString.split(';');
+        var lnglats = [];
+//        循环出一个他认识的line
+        for (var j in pointArr) {
+            lnglats.push(pointArr[j].split(','))
+        }
+        busLines.push({
+            coords: lnglats,
+            lineStyle: {
+                normal: {
+                    color: echarts.color.modifyHSL('#5A94DF', Math.round(hStep * x))
+                }
+            }
+        })
+    }
+    // 使用刚指定的配置项和数据显示图表。
+    // 指定图表的配置项和数据
+    var option = {
+//        百度地图的相关配置选项
+        bmap: {
+            center: [121.316203, 31.406159],// 中心点
+            zoom: 12, //初始缩放比例
+            roam: true,//允许用户缩放操作
+            /*
+             * 下面这个mapStyle是用来配置地图的样式，例如建筑物，道路，河流等等
+             * */
+            mapStyle: {
+                'styleJson': [{
+                    'featureType': 'water',
+                    'elementType': 'all',
+                    'stylers': {
+                        'color': '#031628'
+                    }
+                }, {
+                    'featureType': 'land',
+                    'elementType': 'geometry',
+                    'stylers': {
+                        'color': '#000102'
+                    }
+                }, {
+                    'featureType': 'highway',
+                    'elementType': 'all',
+                    'stylers': {
+                        'visibility': 'off'
+                    }
+                }, {
+                    'featureType': 'arterial',
+                    'elementType': 'geometry.fill',
+                    'stylers': {
+                        'color': '#000000'
+                    }
+                }, {
+                    'featureType': 'arterial',
+                    'elementType': 'geometry.stroke',
+                    'stylers': {
+                        'color': '#0b3d51'
+                    }
+                }, {
+                    'featureType': 'local',
+                    'elementType': 'geometry',
+                    'stylers': {
+                        'color': '#000000'
+                    }
+                }, {
+                    'featureType': 'railway',
+                    'elementType': 'geometry.fill',
+                    'stylers': {
+                        'color': '#000000'
+                    }
+                }, {
+                    'featureType': 'railway',
+                    'elementType': 'geometry.stroke',
+                    'stylers': {
+                        'color': '#08304b'
+                    }
+                }, {
+                    'featureType': 'subway',
+                    'elementType': 'geometry',
+                    'stylers': {
+                        'lightness': -70
+                    }
+                }, {
+                    'featureType': 'building',
+                    'elementType': 'geometry.fill',
+                    'stylers': {
+                        'color': '#000000'
+                    }
+                }, {
+                    'featureType': 'all',
+                    'elementType': 'labels.text.fill',
+                    'stylers': {
+                        'color': '#857f7f'
+                    }
+                }, {
+                    'featureType': 'all',
+                    'elementType': 'labels.text.stroke',
+                    'stylers': {
+                        'color': '#000000'
+                    }
+                }, {
+                    'featureType': 'building',
+                    'elementType': 'geometry',
+                    'stylers': {
+                        'color': '#022338'
+                    }
+                }, {
+                    'featureType': 'green',
+                    'elementType': 'geometry',
+                    'stylers': {
+                        'color': '#062032'
+                    }
+                }, {
+                    'featureType': 'boundary',
+                    'elementType': 'all',
+                    'stylers': {
+                        'color': '#465b6c'
+                    }
+                }, {
+                    'featureType': 'manmade',
+                    'elementType': 'all',
+                    'stylers': {
+                        'color': '#022338'
+                    }
+                }, {
+                    'featureType': 'label',
+                    'elementType': 'all',
+                    'stylers': {
+                        'visibility': 'off'
+                    }
+                }]
+            }
+        },
+        series: [{
+            type: 'lines',
+            coordinateSystem: 'bmap',
+            polyline: true,
+            data: busLines,
+            silent: true,
+            lineStyle: {
+                normal: {
+                    // color: '#c23531',
+                    // color: 'rgb(200, 35, 45)',
+                    opacity: 0.3,
+                    width: 5
+                }
+            },
+            progressiveThreshold: 500,
+            progressive: 200
+        }, {
+            type: 'lines',
+            coordinateSystem: 'bmap',
+            polyline: true,
+            data: busLines,
+            lineStyle: {
+                normal: {
+                    width: 0
+                }
+            },
+            effect: {
+                constantSpeed: 50,
+                show: true,
+                trailLength: 0.1,
+                symbolSize: 5
+            },
+            zlevel: 1
+        }]
+    };
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            liuhang: 100,
+            shidong: 80,
+            baihe: 63,
+            mvd03: 78,
+            anting: 58,
+            tegang: 70
+        },
+        mounted() {
+            myChart = echarts.init(document.getElementById('container'));
+            console.log(busLines);
+            myChart.setOption(option);
+        },
+        methods: {
+            compare() {
+//                比较大小
+//                刘行和白鹤
+                if (this.liuhang >= this.baihe) {
+                    data[0].ROAD_LINE = defaultDirection.lh2bh;
+                    console.log('yes');
+                } else {
+                    data[0].ROAD_LINE = defaultDirection.lh2bh.split(';').reverse().join(';');
+                    console.log('yes');
+                }
+//                刘行 石洞
+                if (this.liuhang >= this.shidong) {
+                    data[1].ROAD_LINE = defaultDirection.lh2sd;
+                } else {
+                    data[1].ROAD_LINE = defaultDirection.lh2sd.split(';').reverse().join(';');
+                }
+//                白鹤 安亭
+                if (this.baihe >= this.anting) {
+                    data[2].ROAD_LINE = defaultDirection.bh2at;
+                } else {
+                    data[2].ROAD_LINE = defaultDirection.bh2at.split(';').reverse().join(';');
+                }
+//                刘行mv
+                if (this.liuhang >= this.mvd03) {
+                    data[3].ROAD_LINE = defaultDirection.lh2mv;
+                } else {
+                    data[3].ROAD_LINE = defaultDirection.lh2mv.split(';').reverse().join(';');
+                }
+//                mv2 特岗
+                if (this.mvd03 >= this.tegang) {
+                    data[4].ROAD_LINE = defaultDirection.mv2tg;
+                } else {
+                    data[4].ROAD_LINE = defaultDirection.mv2tg.split(';').reverse().join(';');
+                }
+                busLines = [];
+                for (var x in data) {
+                    // i++;
+                    // if(i<5000)
+                    //     continue;
+                    var line = data[x];
+                    // if(busLines.length>500)
+                    //     break;
+                    var pointString = line.ROAD_LINE;
+                    var pointArr = pointString.split(';');
+                    var lnglats = [];
+                    for (var j in pointArr) {
+                        lnglats.push(pointArr[j].split(','))
+                    }
+                    busLines.push({
+                        coords: lnglats,
+                        lineStyle: {
+                            normal: {
+                                color: echarts.color.modifyHSL('#5A94DF', Math.round(hStep * x))
+                            }
+                        }
+                    })
+                }
+                option.series[1].data = busLines;
+                myChart.setOption(option);
+            }
+        }
+    })
+    var pointLiuHang = new BMap.Point(121.333243,31.381085);
+    var pointBaiHe = new BMap.Point(121.153105,31.279613);
+    var pointAnTing = new BMap.Point(121.167871,31.293179);
+    var pointShiDong = new BMap.Point(121.417072,31.466133);
+    var pointMdv03 = new BMap.Point(121.347457,31.353649);
+    var pointTeGang = new BMap.Point(121.485077,31.400788);
+    var labelLiuHang = new BMap.Label("刘行门站 ",{offset:new BMap.Size(20,-10)});
+    var labelBaiHe = new BMap.Label("白鹤门站",{offset:new BMap.Size(-65,-10)});
+    var labelAnTing = new BMap.Label("安亭门站",{offset:new BMap.Size(20,-10)});
+    var labelShiDong = new BMap.Label("石洞门站",{offset:new BMap.Size(20,-10)});
+    var labelMdv03 = new BMap.Label("Mdv03",{offset:new BMap.Size(20,-10)});
+    var labelTeGang = new BMap.Label("特岗南站",{offset:new BMap.Size(20,-10)});
+    var bmap = myChart.getModel().getComponent('bmap').getBMap();
+    var markerLiuHang = new BMap.Marker(pointLiuHang);
+    var markerBaiHe = new BMap.Marker(pointBaiHe);
+    var markerAnTing = new BMap.Marker(pointAnTing);
+    var markerShiDong = new BMap.Marker(pointShiDong);
+    var markerMdv03 = new BMap.Marker(pointMdv03);
+    var markerTeGang = new BMap.Marker(pointTeGang);
+    markerLiuHang.setLabel(labelLiuHang);
+    markerBaiHe.setLabel(labelBaiHe);
+    markerAnTing.setLabel(labelAnTing);
+    markerShiDong.setLabel(labelShiDong);
+    markerMdv03.setLabel(labelMdv03);
+    markerTeGang.setLabel(labelTeGang);
+    bmap.addOverlay(markerLiuHang);
+    bmap.addOverlay(markerBaiHe);
+    bmap.addOverlay(markerAnTing);
+    bmap.addOverlay(markerShiDong);
+    bmap.addOverlay(markerMdv03);
+    bmap.addOverlay(markerTeGang);
+
+</script>
+</html>
