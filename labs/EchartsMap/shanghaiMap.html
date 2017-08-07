@@ -87,26 +87,32 @@
                 <div class="control-item">
                     <label for="">刘行门站</label>
                     <input type="number" class="am-form-field am-round" v-model.number="liuhang">
+                    <span>Kpa</span>
                 </div>
                 <div class="control-item">
-                    <label for="">白鹤门站</label>
+                    <label for="">Bh01</label>
                     <input type="number" class="am-form-field am-round" v-model.number="baihe">
+                    <span>Kpa</span>
                 </div>
                 <div class="control-item">
-                    <label for="">安亭站</label>
+                    <label for="">At01</label>
                     <input type="number" class="am-form-field am-round" v-model.number="anting">
+                    <span>Kpa</span>
                 </div>
                 <div class="control-item">
-                    <label for="">石洞口站</label>
+                    <label for="">Sd01</label>
                     <input type="number" class="am-form-field am-round" v-model.number="shidong">
+                    <span>Kpa</span>
                 </div>
                 <div class="control-item">
                     <label for="">MVD03</label>
                     <input type="number" class="am-form-field am-round" v-model.number="mvd03">
+                    <span>Kpa</span>
                 </div>
                 <div class="control-item">
-                    <label for="">特钢南站</label>
+                    <label for="">Tgn01</label>
                     <input type="number" class="am-form-field am-round" v-model.number="tegang">
+                    <span>Kpa</span>
                 </div>
             </div>
         </div>
@@ -430,11 +436,11 @@
     var pointMdv03 = new BMap.Point(121.347457, 31.353649);
     var pointTeGang = new BMap.Point(121.485077, 31.400788);
     var labelLiuHang = new BMap.Label("刘行门站 ", {offset: new BMap.Size(20, -10)});
-    var labelBaiHe = new BMap.Label("白鹤门站", {offset: new BMap.Size(-65, -10)});
-    var labelAnTing = new BMap.Label("安亭门站", {offset: new BMap.Size(20, -10)});
-    var labelShiDong = new BMap.Label("石洞门站", {offset: new BMap.Size(20, -10)});
+    var labelBaiHe = new BMap.Label("Bh01", {offset: new BMap.Size(-65, -10)});
+    var labelAnTing = new BMap.Label("At01", {offset: new BMap.Size(20, -10)});
+    var labelShiDong = new BMap.Label("Sd01", {offset: new BMap.Size(20, -10)});
     var labelMdv03 = new BMap.Label("Mdv03", {offset: new BMap.Size(20, -10)});
-    var labelTeGang = new BMap.Label("特岗南站", {offset: new BMap.Size(20, -10)});
+    var labelTeGang = new BMap.Label("Tgn01", {offset: new BMap.Size(20, -10)});
     var bmap = myChart.getModel().getComponent('bmap').getBMap();
     var markerLiuHang = new BMap.Marker(pointLiuHang);
     var markerBaiHe = new BMap.Marker(pointBaiHe);
